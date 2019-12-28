@@ -14,7 +14,7 @@ client.on("ready", async () => {
 });
 
 client.on("message", async (msg) => {
-	if (msg.author.id === "658605529157074954") {
+	if (msg.author.id === "408785106942164992") {
 		if (msg.content.includes("Are you a real human?")) {
 			var link;
 			var mAuthor = msg.author.lastMessageID;
