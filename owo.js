@@ -15,23 +15,23 @@ client.on("ready", async () => {
 client.on("message", async (msg) => {
   if (msg.author.id === "408785106942164992") {
     if (msg.content.includes("Are you a real human?")) {
-      var link;
-      var mAuthor = msg.author.lastMessageID;
-      var mid = msg.channel.messages.get(`${mAuthor}`);
-      var gAttachment = mid.attachments.map(file => file.id);
-      var attachment_id = mid.attachments.get(`${gAttachment}`);
-      var attached = `${attachment_id.url}`;
+      var link,
+      mAuthor = msg.author.lastMessageID,
+      mid = msg.channel.messages.get(`${mAuthor}`),
+      gAttachment = mid.attachments.map(file => file.id),
+      attachment_id = mid.attachments.get(`${gAttachment}`),
+      attached = `${attachment_id.url}`,
       link = attached;
-      var base64 = await image2base64(attached);
-      var captha = new ImageToTextTask({
+      base64 = await image2base64(attached),
+      captha = new ImageToTextTask({
         body: base64,
         phrase: false,
         case: true,
         numeric: 0,
         math: false,
         length: [5,5]
-      });
-      var selesai = await anticaptcha.solve(captha);
+      }),
+      selesai = await anticaptcha.solve(captha);
       msg.channel.send(selesai.text)
         .then(() => {
               msg.channel.awaitMessages(response => response.content.includes("I have verified that you are human"), {
