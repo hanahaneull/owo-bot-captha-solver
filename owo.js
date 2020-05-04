@@ -8,8 +8,8 @@ sleep = (waitTimeInMs) => new Promise(resolve => setTimeout(resolve, waitTimeInM
 
 
 client.on("ready", async () => {
-  var saldo = await anticaptcha.getBalance();
-  console.log(`${client.user.tag}, Bring it on!\n${saldo}`);
+  var balance = await anticaptcha.getBalance();
+  console.log(`${client.user.tag}, Bring it on!\n${balance}`);
 });
 
 client.on("message", async (msg) => {
@@ -40,10 +40,10 @@ client.on("message", async (msg) => {
                 errors: ['time'],
               })
             .then((collected) => {
-                console.log("Mantap");
+                console.log("Success");
                 })
               .catch(() => {
-                console.log("Gk mantap");
+                console.log("Failed");
               });
           });
     };
